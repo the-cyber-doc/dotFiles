@@ -120,7 +120,7 @@ alias du='du -h'
 # Misc :)
 # alias less='less -r'                        # raw control characters
 # alias whence='type -a'                      # where, of a sort
-alias grep='grep -n --color'                  # show differences in colour
+alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
 alias vi='vim'
@@ -128,10 +128,10 @@ alias du1='du -h --max-depth=1'
 alias ps='ps -ef'
 if [ "${CURRENT_OS}" == "OSX" ];then
   alias netstatp='netstat -taun -p tcp'
-  alias ll='ls -alpFG' # For Mac OSX          # long list
+  alias ll='ls -alpFGA' # For Mac OSX          # long list
 else 
   alias netstatp='netstat -taupen'
-  alias ll='ls -alpF --color=always'          # long list
+  alias ll='ls -alpFA --color=always'          # long list
 fi
 
 # Some shortcuts for different directory listings
@@ -147,12 +147,12 @@ export SVN_EDITOR=vim
 export VISUAL=vim
 export EDITOR=vim
 
-DISPLAY=:0
+#DISPLAY=:0
 
 # Used to fix Perl error with locals
-export LC_CTYPE=fr_CH.UTF-8
-export LC_ALL=fr_CH.UTF-8
-export LANG=fr_CH.UTF-8
+#export LC_CTYPE=fr_CH.UTF-8
+#export LC_ALL=fr_CH.UTF-8
+#export LANG=fr_CH.UTF-8
 
 # Umask
 #
@@ -160,7 +160,8 @@ export LANG=fr_CH.UTF-8
 # Set a more restrictive umask: i.e. no exec perms for others:
 # umask 027
 # Paranoid: neither group nor others have any perms:
-umask 077
+# umask 077
+umask 027
 
 # Path
 # Add bin to the path
@@ -262,4 +263,5 @@ fi
 # 
 # alias cd=cd_func
 
-
+# Include all .sh files located in .bashrc.d
+for f in ~/.bashrc.d/*.sh; do . "$f"; done
