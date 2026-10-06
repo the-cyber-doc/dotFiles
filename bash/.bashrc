@@ -264,4 +264,6 @@ fi
 # alias cd=cd_func
 
 # Include all .sh files located in .bashrc.d
-for f in ~/.bashrc.d/*.sh; do . "$f"; done
+if [ -d ~/.bashrc.d ]; then
+  for f in ~/.bashrc.d/*.sh; do . "$f"; done
+fi
